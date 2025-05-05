@@ -9,6 +9,8 @@ import humanizeDuration from 'humanize-duration'
 import YouTube from 'react-youtube';
 import { useAuth } from '@clerk/clerk-react';
 import Loading from '../../components/student/Loading';
+import CourseUnavailable from '../../pages/student/CourseUnavailable';
+
 
 const CourseDetails = () => {
 
@@ -95,7 +97,10 @@ const CourseDetails = () => {
 
   }, [userData, courseData])
 
-  return courseData ? (
+if (!courseData) return <Loading />;
+if (!courseData.educator) return <CourseUnavailable />;
+
+  return (
     <>
       <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-20 pt-10 text-left">
         <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-cyan-100/70"></div>
@@ -219,7 +224,7 @@ const CourseDetails = () => {
       </div>
       <Footer />
     </>
-  ) : <Loading />
+  ) 
 };
 
 export default CourseDetails;
