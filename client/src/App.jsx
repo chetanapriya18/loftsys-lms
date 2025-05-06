@@ -17,7 +17,6 @@ import MyEnrollments from './pages/student/MyEnrollments'
 import Loading from './components/student/Loading'
 import CourseUnavailable from './pages/student/CourseUnavailable';
 
-
 const App = () => {
 
   const isEducatorRoute = useMatch('/educator/*');
@@ -42,6 +41,7 @@ const App = () => {
           <Route path='my-courses' element={<MyCourses />} />
           <Route path='student-enrolled' element={<StudentsEnrolled />} />
         </Route>
+
       </Routes>
     </div>
   )
